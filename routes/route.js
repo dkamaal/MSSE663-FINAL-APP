@@ -13,7 +13,7 @@ router.get('/applications', (req, res, next)=>{
 
 
 //add applications
-router.post('/applications', (req, res, next)=>{
+router.post('/application',(req, res, next)=>{
     let newApplication = new Application({
         school_name: req.body.school_name,
         first_name: req.body.first_name,
@@ -21,6 +21,7 @@ router.post('/applications', (req, res, next)=>{
         phone: req.body.phone,
         email: req.body.email
     });
+
     newApplication.save((err, application)=>{
         if(err){
             res.json({msg: 'Unable to Create Application'});
@@ -33,7 +34,7 @@ router.post('/applications', (req, res, next)=>{
 
 
 //add applications
-router.delete('/applications/:id', (req, res, next)=>{
+router.delete('/application/:id', (req, res, next)=>{
     Application.remove({_id: req.params.id}, function(err, result){
         if(err){
             res.json(err);

@@ -2,7 +2,7 @@
 
 var express = require('express');
 var mongoose = require('mongoose');
-var bodyparser = require('body-parser');
+//var bodyparser = require('bodyparser');
 var cors = require('cors');
 var path = require('path');
 
@@ -12,8 +12,9 @@ const route = require('./routes/route');
 
 
 //MongoDB Connection
+mongoose.connect('mongodb://localhost:27017/applicatons', { useNewUrlParser: true, useUnifiedTopology: true});
 
-mongoose.connect('mongodb://localhost:27017/applications');
+//mongoose.connect('mongodb://localhost:27017/applications');
 
 //On Successfull Connection
 
@@ -40,8 +41,10 @@ const port = 3000;
 app.use(cors());
 
 //body - parser
-
+app.use(express.urlencoded({extended: true}));
+app.use(express.json()) // To parse the incoming requests with JSON payloads
 //app.use(bodyparser.json());
+
 
 //static files
 
