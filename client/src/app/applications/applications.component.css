@@ -1,0 +1,24 @@
+/*New Table*/
+#schooltable {
+    font-family: 'Quicksand', sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    margin: auto;
+  }
+  
+  #schooltable td, #schooltable th {
+    border: 1px solid black;
+    padding: 4px;
+  }
+  
+  #schooltable tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #schooltable tr:hover {background-color: #ddd;}
+  
+  #schooltable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+  }

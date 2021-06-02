@@ -4,7 +4,7 @@ const router = express.Router();
 const Application = require('../models/applications');
 
 
-//retrieving applications
+//retrieving applications format: app.METHOD(PATH, HANDLER)
 router.get('/applications', (req, res, next)=>{
     Application.find(function(err, applications){
         res.json(applications);
@@ -12,7 +12,7 @@ router.get('/applications', (req, res, next)=>{
 });
 
 
-//add applications
+//add applications format: app.METHOD(PATH, HANDLER)
 router.post('/application',(req, res, next)=>{
     let newApplication = new Application({
         school_name: req.body.school_name,
@@ -33,9 +33,9 @@ router.post('/application',(req, res, next)=>{
 });
 
 
-//add applications
+//add applications format: app.METHOD(PATH, HANDLER)
 router.delete('/application/:id', (req, res, next)=>{
-    Application.remove({_id: req.params.id}, function(err, result){
+    Application.deleteOne({_id: req.params.id}, function(err, result){//earlier it was Application.remove
         if(err){
             res.json(err);
         }
