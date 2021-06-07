@@ -1,3 +1,2 @@
 5/23/2021: Application is in initial stage. Created Project added route.js, model.js and app.js with coding. Created Client application using AngularCLI.
-5/30/2021: Recovered Files: Application Routes, Models are done. Able to use Postman to add, delete and get data from APIs using Postman
-6/2/2021: Add, Delete functionality is working. Added School Table
+6/6/2021: Add Record, Delete Record and View all records functionality is working. Currently working on Update record functionality, able to send ID to Update page to update record. Still working on getting record in table format and use Update functiion to update record.

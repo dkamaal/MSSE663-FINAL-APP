@@ -12,17 +12,19 @@ import { ConvertActionBindingResult } from '@angular/compiler/src/compiler_util/
 export class ApplicationsComponent implements OnInit {
   applications: any = [];
   application: Application;
-  // _id?: string;
+  _id: string;
   school_name: string;
   first_name: string;
   last_name: string;
   phone: string;
   email: string;
 
+
   constructor(private applicationService: ApplicationService) {}
 
   addApplication() {
     const newApplication = {
+      _id: this._id,
       school_name: this.school_name,
       first_name: this.first_name,
       last_name: this.last_name,
@@ -53,6 +55,11 @@ export class ApplicationsComponent implements OnInit {
     });
   }
 
+  // getApplication(id){
+  //   this.applicationService
+  //   .getApplication(id)
+  //   .subscribe((applications) => (this.applications = applications));
+  // }
 
   ngOnInit() {
     this.applicationService

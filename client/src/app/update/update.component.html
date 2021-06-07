@@ -1,4 +1,4 @@
-<style>
+<!-- <style>
     h2 {
         text-align: center
     }
@@ -14,8 +14,8 @@
                     <form (submit)="updateApplication()">
                         <div class="form-group">
                             <input type="hidden" [(ngModel)]="_id" name= "_id" class="form-control"
-                            required>
-                            <label>School Name</label>
+                            required> -->
+                            <!-- <label>School Name</label>
                             <input type="text" [(ngModel)]="school_name" name="school_name" class="form-control"
                                 required>
                         </div>
@@ -41,4 +41,43 @@
                 </div>
             </div>
         </div>
+    </div> --> 
+
+
+
+<div class="container">
+
+    <style>
+        h3 {
+            text-align: center
+        }
+    </style>
+    <h3>Applications</h3>
+    <div *ngIf="applications">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>School Name</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{school_name}}</td>
+                    <td>{{first_name}}</td>
+                    <td>{{last_name}}</td>
+                    <td>{{phone}}</td>
+                    <td>{{email}}</td>
+                        <!-- <input type="button" [routerLink] = "['/update', application._id]" value="Update" class="btn btn btn-success"> -->
+                        <!-- <input type="submit" (click)="getApplication(application._id)" value="Update"
+                            class="btn btn btn-success"> -->
+                   
+                </tr>
+            </tbody>
+        </table>
     </div>
+
+</div>

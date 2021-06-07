@@ -3,6 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Injectable()
 export class ApplicationService {
@@ -28,20 +29,28 @@ export class ApplicationService {
   }
 
   //delete application
-  deleteApplication(id) {
+  deleteApplication(id: String) {
     return this.http
       .delete('http://localhost:3000/api/application/' + id)
       .pipe(map((res) => res));
   }
 
   //Update application method
-  updateApplication(id, newApplication) {
+  updateApplication(id) {
     var headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.http
-      .put('http://localhost:3000/api/application' + id, newApplication, {
+      .put('http://localhost:3000/api/application' + id, {
         headers: headers,
       })
       .pipe(map((res) => res));
   }
+
+  getApplication(id) {
+    return this.http
+      .get('http://localhost:3000/api/applications/' + id)
+      .pipe(map((res) => res));
+  }  
 }
+
+

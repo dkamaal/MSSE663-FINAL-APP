@@ -107,12 +107,14 @@
                     <td><input type="button" (click)="deleteApplication(application._id)" value="Delete"
                             class="btn btn-danger">
                         <input type="button" [routerLink] = "['/update', application._id]" value="Update" class="btn btn btn-success">
-                        <!-- <input type="button" (click)="updateApplication()" value="Update" class="btn btn btn-success"> -->
+                        <!-- <input type="submit" (click)="getApplication(application._id)" value="Update"
+                            class="btn btn btn-success"> -->
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
+
 </div>
 <!-- </div>
 

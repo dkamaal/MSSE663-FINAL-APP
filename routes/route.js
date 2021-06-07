@@ -58,6 +58,12 @@ router.delete('/application/:id', (req, res, next)=>{
             }
         })
     });
+//retrieving singleapplications format: app.METHOD(PATH, HANDLER)
+router.get('/applications/:id', (req, res, next)=>{
+    Application.findOne({_id: req.params.id},function(err, applications){
+        res.json(applications);
+    })
+});
 
 
 module.exports = router;
