@@ -36,21 +36,23 @@ export class ApplicationService {
   }
 
   //Update application method
-  updateApplication(id) {
+  updateApplication(id: string, newupdateApplication) {
     var headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.http
-      .put('http://localhost:3000/api/application' + id, {
+      .put('http://localhost:3000/api/application/' + id, newupdateApplication, {
         headers: headers,
       })
       .pipe(map((res) => res));
   }
 
+  // updateApplication(id, newupdateApplication): Observable<any> {
+  //   return this.http.put('http://localhost:3000/api/application/' + id, newupdateApplication);
+  // }
+
   getApplication(id) {
     return this.http
       .get('http://localhost:3000/api/applications/' + id)
       .pipe(map((res) => res));
-  }  
+  }
 }
-
-

@@ -1,5 +1,6 @@
 const { application } = require('express');
 const express = require('express');
+const applications = require('../models/applications');
 const router = express.Router();
 
 const Application = require('../models/applications');
@@ -49,7 +50,8 @@ router.delete('/application/:id', (req, res, next)=>{
 //Update applications format: app.METHOD(PATH, HANDLER)
 
     router.put('/application/:id', (req, res, next)=>{
-        Application.updateOne({_id: req.params.id}, req.body, function(err, result){//earlier it was Application.remove
+        Application.findByIdAndUpdate({_id: req.params.id}, req.body, function(err, result){//earlier it was Application.remove
+         
             if(err){
                 res.json(err);
             }

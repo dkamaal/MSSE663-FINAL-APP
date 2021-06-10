@@ -33,6 +33,7 @@ export class ApplicationsComponent implements OnInit {
     }
     this.applicationService.addApplication(newApplication).subscribe(application => {
       this.applications.push(application);
+      console.log(newApplication);
       this.applicationService
       .getApplications()
       .subscribe((applications) => (this.applications = applications));
