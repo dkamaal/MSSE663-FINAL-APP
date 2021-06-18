@@ -3,3 +3,4 @@
 6/2/2021: Add, Delete functionality is working. Added School Table
 6/6/2021: Add Record, Delete Record and View all records functionality is working. Currently working on Update record functionality, able to send ID to Update page to update record. Still working on getting record in table format and use Update functiion to update record.
 6/10/2021: CRUD functions are working.
+6/18/2021: Search by ZIP Code Functionality is also working

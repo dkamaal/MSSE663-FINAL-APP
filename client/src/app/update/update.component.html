@@ -14,71 +14,39 @@
                 <div class="col-md-6">
                     <form (submit)="update()">
                         <div class="form-group">
-                            <input type="hidden" [(ngModel)]="applications._id" name="_id" class="form-control" required>
-                            <label>School Name</label>
-                            <input type="text" [(ngModel)]="applications.school_name" name="school_name" class="form-control"
+                            <input type="hidden" [(ngModel)]="applications._id" name="_id" class="form-control"
                                 required>
+                            <label>School Name</label>
+                            <input type="text" [(ngModel)]="applications.school_name" name="school_name"
+                                class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>First Name</label>
-                            <input type="text" [(ngModel)]="applications.first_name" name="first_name" class="form-control" required>
+                            <input type="text" [(ngModel)]="applications.first_name" name="first_name"
+                                class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Last Name</label>
-                            <input type="text" [(ngModel)]="applications.last_name" name="last_name" class="form-control" required>
+                            <input type="text" [(ngModel)]="applications.last_name" name="last_name"
+                                class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Phone</label>
-                            <input type="text" [(ngModel)]="applications.phone" name="phone" class="form-control" required>
+                            <input type="text" [(ngModel)]="applications.phone" name="phone" class="form-control"
+                                required>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="text" [(ngModel)]="applications.email" name="email" class="form-control" required>
+                            <input type="text" [(ngModel)]="applications.email" name="email" class="form-control"
+                                required>
                         </div>
                         <br>
                         <input type="submit" class="btn btn btn-success" value="Update">
-                        <!-- <input type="submit" (click)="updateApplication(id)" class="btn btn btn-success" value="Update"> -->
+                        <a href="#" class="btn btn btn-danger">Cancel</a>
                     </form>
+                    <br>
+                    <p>{{ message}}</p>
                 </div>
             </div>
         </div>
     </div>
-
-
-
-    <!-- <div class="container">
-
-    <style>
-        h3 {
-            text-align: center
-        }
-    </style>
-    <h3>Applications</h3>
-    <div *ngIf="this.applications">
-        <div *ngFor="let application of applications"></div>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>School Name</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{applications.school_name}}</td>
-                    <td>{{applications.first_name}}</td>
-                    <td>{{applications.last_name}}</td>
-                    <td>{{applications.phone}}</td>
-                    <td>{{applications.email}}</td>
-                    <input type="button" [routerLink] = "['/update', application._id]" value="Update" class="btn btn btn-success"> -->
-    <!-- <input type="submit" (click)="getApplication(application._id)" value="Update"
-                            class="btn btn btn-success"> -->
-
-    <!-- </tr>
-            </tbody>
-        </table>
-    </div>
-</div> -->

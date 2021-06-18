@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-update',
   templateUrl: './update.component.html',
   styleUrls: ['./update.component.css'],
-  providers: [ApplicationService]
+  providers: [ApplicationService],
 })
 export class UpdateComponent implements OnInit {
   applications: any = [];
@@ -53,29 +53,27 @@ export class UpdateComponent implements OnInit {
   update(): void {
     const newupdateApplication = {
       // _id: this.applications._id,
-     school_name: this.applications.school_name,
-     first_name: this.applications.first_name,
-     last_name: this.applications.last_name,
-     phone: this.applications.phone,
-     email: this.applications.email
+      school_name: this.applications.school_name,
+      first_name: this.applications.first_name,
+      last_name: this.applications.last_name,
+      phone: this.applications.phone,
+      email: this.applications.email,
     };
     this.applicationService
       .updateApplication(this._id, newupdateApplication)
       .subscribe(
         (response) => {
           console.log(response);
-          this.message = 'The product was updated!';
+          this.message = 'Application Updated Successfully. Please go to Home page for New Application.';
         },
         (error) => {
           console.log(error);
         }
       );
-  //     console.log(this._id);
-  // console.log(newupdateApplication + 'test');
+    //     console.log(this._id);
+    // console.log(newupdateApplication + 'test');
   }
-  
 }
-
 
 // getApplication(id: string) {
 //   this.applicationService

@@ -4,10 +4,26 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { identifierModuleUrl } from '@angular/compiler';
+import { RouterModule, Routes } from '@angular/router';
 
 @Injectable()
 export class ApplicationService {
   constructor(private http: HttpClient) {}
+
+    //get schooldetail by zip code
+
+// getSchoolDetail(){
+//   return this.http
+//     .get('http://localhost:3000/api/schooldetail')
+//     .pipe(map((res) => res));
+// }
+
+getSchoolDetail(zip: number){
+  return this.http
+    .get('http://localhost:3000/api/schooldetail/' + zip)
+    .pipe(map((res) => res));
+}
+
 
   //retrieving application service
 
@@ -55,4 +71,8 @@ export class ApplicationService {
       .get('http://localhost:3000/api/applications/' + id)
       .pipe(map((res) => res));
   }
+
+
 }
+
+
