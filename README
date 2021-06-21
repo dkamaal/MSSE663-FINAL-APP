@@ -3,4 +3,15 @@
 6/2/2021: Add, Delete functionality is working. Added School Table
 6/6/2021: Add Record, Delete Record and View all records functionality is working. Currently working on Update record functionality, able to send ID to Update page to update record. Still working on getting record in table format and use Update functiion to update record.
 6/10/2021: CRUD functions are working.
-6/18/2021: Search by ZIP Code Functionality is also working
+6/18/2021: Search by ZIP Code Functionality is also working.
+6/20/2021: CRUD functions are working for Application Form. Also added Search By ZIP Code functionality for school search. Added Error Handling for All Forms.
+
+
+******************************************************************************************8
+Database Name: schoolapplications
+Collections: applications
+             schooldetail
+
+Data for collection-schooldetail
+db.schooldetail.insertMany([{schoolname: "ABC School", rating: 10, zip: 80129,city: "Highlands Ranch"}, {schoolname: "XYZ School", rating: 9, zip: 80129,city: "Highlands Ranch"}, {schoolname: "MNO School", rating: 10, zip: 80014,city: "Denver"}, {schoolname: "PQR School", rating: 9, zip: 80014,city: "Denver"}]);             
+

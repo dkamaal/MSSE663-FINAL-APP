@@ -34,22 +34,9 @@ export class UpdateComponent implements OnInit {
 
     this.applicationService.getApplication(this._id).subscribe((data) => {
       this.applications = data;
-      // console.log(data);
-      // console.log(this.applications);
     });
   }
 
-  // updateApplication(id) {
-  //   const newApplication = {
-  //     _id: this.id,
-  //     school_name: this.school_name,
-  //     first_name: this.first_name,
-  //     last_name: this.last_name,
-  //     phone: this.phone,
-  //     email: this.email,
-  //   };
-  //   console.log(this.first_name);
-  // }
   update(): void {
     const newupdateApplication = {
       // _id: this.applications._id,
@@ -64,19 +51,12 @@ export class UpdateComponent implements OnInit {
       .subscribe(
         (response) => {
           console.log(response);
-          this.message = 'Application Updated Successfully. Please go to Home page for New Application.';
+          this.message =
+            'Application Updated Successfully. Please go to Home page for New Application.';
         },
         (error) => {
           console.log(error);
         }
       );
-    //     console.log(this._id);
-    // console.log(newupdateApplication + 'test');
   }
 }
-
-// getApplication(id: string) {
-//   this.applicationService
-//     .getApplication(id)
-//     .subscribe((applications) => (this.applications = applications));
-// }

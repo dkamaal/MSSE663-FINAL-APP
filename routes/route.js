@@ -6,20 +6,10 @@ const router = express.Router();
 
 var Application = require("../models/applications");
 var SchoolDetail = require("../models/schooldetail");
-// const schooldetail = require("../models/applications");
 
-
-
-// retrieve school detail by ZIP Code
-
-// router.get('/schooldetail', (req, res, next) => {
-//   SchoolDetail.find(function (err, schooldetail) {
-//   res.json(schooldetail);
-//   })
-// });
 
 router.get('/schooldetail/:zip', (req, res, next)=>{
-  SchoolDetail.find({zip: req.params.zip}, function(err, result){//earlier it was Application.remove
+  SchoolDetail.find({zip: req.params.zip}, function(err, result){
       if(err){
           res.json(err);
       }
@@ -93,33 +83,5 @@ Application.findOne({_id: req.params.id},function(err, applications){
   res.json(applications);
 })
 });
-
-
-
-// router.get('/applications', function(req, res) {
-//   var db = req.db;
-//   var collection = db.get('schooldetail');
-//   collection.find({},{},function(e,docs){
-//     res.json(docs);
-//   });
-// });
-
-
-
-// router.get("/", function(req, res) {
-//     Application.find({}, function(err, applications) {
-//          if(err) {
-//               console.log(err);
-//          } else {
-//               SchoolDetail.find({}, function(err, schooldetail) {
-//                    if(err) {
-//                         console.log(err)
-//                    } else {
-//                         res.render("page", {applications: applications, schooldetail: schooldetail});
-//                    }  
-//               }); 
-//          }
-//     });
-// });
 
 module.exports = router;

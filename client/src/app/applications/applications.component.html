@@ -1,49 +1,86 @@
+<div class="container">
+    <div class="col-md-12">
+        <img class='img-responsive' src="assets/graduationcap.gif" width='150' height='150' style="margin:0px 150px">
+        <img class='img-responsive' src="assets/schoolbuilding.gif" width='150' height='150' style="float:right; margin:0px 150px">
+    </div>
+</div>
 <hr>
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h3>Apply to Schools Below</h3>
+            <h3>Application Form</h3>
             <div class="row">
                 <div class="col-md-10">
-                    <form (submit)="addApplication()">
+                    <form #applyForm="ngForm" (submit)="addApplication()">
                         <div class="form-group">
-                            <label>School Name</label>
+                            <label for="school_name" class="control-label">School Name</label>
                             <input type="text" [(ngModel)]="school_name" name="school_name" class="form-control"
-                                required>
+                                #school_nameControl="ngModel" required
+                                [class.is-invalid]="school_nameControl.invalid && school_nameControl.touched">
+                            <span class="help-block" style="color:rgb(221, 55, 55)"
+                                *ngIf="school_nameControl.invalid && school_nameControl.touched">School Name is
+                                required</span>
                         </div>
                         <div class="form-group">
-                            <label>First Name</label>
-                            <input type="text" [(ngModel)]="first_name" name="first_name" class="form-control" required>
+                            <label for="first_name" class="control-label">First Name</label>
+                            <input type="text" [(ngModel)]="first_name" name="first_name" class="form-control"
+                                #first_nameControl="ngModel" required
+                                [class.is-invalid]="first_nameControl.invalid && first_nameControl.touched">
+                            <span class="help-block" style="color:rgb(221, 55, 55)"
+                                *ngIf="first_nameControl.invalid && first_nameControl.touched">First Name is
+                                required</span>
                         </div>
                         <div class="form-group">
-                            <label>Last Name</label>
-                            <input type="text" [(ngModel)]="last_name" name="last_name" class="form-control" required>
+                            <label for="last_name" class="control-label">Last Name</label>
+                            <input type="text" [(ngModel)]="last_name" name="last_name" class="form-control"
+                                #last_nameControl="ngModel" required
+                                [class.is-invalid]="last_nameControl.invalid && last_nameControl.touched">
+                            <span class="help-block" style="color:rgb(221, 55, 55)"
+                                *ngIf="last_nameControl.invalid && last_nameControl.touched">Last Name is
+                                required</span>
                         </div>
                         <div class="form-group">
-                            <label>Phone</label>
-                            <input type="text" [(ngModel)]="phone" name="phone" class="form-control" required>
+                            <label for="last_name" class="control-label">Phone</label>
+                            <input type="text" [(ngModel)]="phone" name="phone" pattern="^\d{10}$" maxlength="10"
+                                class="form-control" #phoneControl="ngModel" required
+                                [class.is-invalid]="phoneControl.invalid && phoneControl.touched">
+                            <span class="help-block" style="color:rgb(221, 55, 55)"
+                                *ngIf="phoneControl.invalid && phoneControl.touched">Phone is required and must be
+                                10
+                                Digits</span>
                         </div>
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" [(ngModel)]="email" name="email" class="form-control" required>
+                            <label for="email" class="control-label">Email</label>
+                            <input type="text" [(ngModel)]="email" name="email" class="form-control"
+                                #emailControl="ngModel" required
+                                [class.is-invalid]="emailControl.invalid && emailControl.touched">
+                            <span class="help-block" style="color:rgb(221, 55, 55)"
+                                *ngIf="emailControl.invalid && emailControl.touched">Email is required</span>
                         </div>
                         <br>
-                        <input type="submit" class="btn btn btn-success" value="Apply">
+                        <input type="submit" class="btn btn btn-success" [disabled]="applyForm.invalid" value="Apply">
+
                     </form>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
-            <h3>Schools List</h3>
+            <h3>Search Schools</h3>
             <div class="col-md-4"></div>
-            <form (submit)="getSchoolDetail(zip)">
+            <form #searchForm="ngForm" (submit)="getSchoolDetail(zip)">
                 <div class="form-group">
-                    <label>ZIP Code</label>
-                    <input type="text" [(ngModel)]="zip" name="zip" (click)="getSchoolDetail(zip)" class="form-control"
-                        required>
+                    <label for="zip" class="control-label">Enter ZIP Code</label>
+                    <input type="text" [(ngModel)]="zip" name="zip" pattern="^\d{5}$" maxlength="5"
+                        data-toggle="tooltip" title="Schools available for ZIP 80129 and 80014" class="form-control"
+                        #zipControl="ngModel" required [class.is-invalid]="zipControl.invalid && zipControl.touched">
+                    <span class="help-block" style="color:rgb(221, 55, 55)"
+                        *ngIf="zipControl.invalid && zipControl.touched">ZIP Code is
+                        required for searching school and must be 5 Digits</span>
                 </div>
                 <br>
-                <input type="submit" class="btn btn btn-success" value="Search">
+                <input type="submit" class="btn btn btn-success" (click)="getSchoolDetail(zip)"
+                    [disabled]="searchForm.invalid" value="Search">
+                <!-- <button type="submit" class="btn btn-primary" (click)="getSchoolDetail(zip)" [disabled]="searchForm.invalid">Search<i class="fas fa-search"></i></button> -->
             </form>
             <div class="container">
                 <style>
@@ -52,7 +89,7 @@
                     }
                 </style>
                 <h3>School Details</h3>
-                <div *ngIf="this.schooldetail"></div>
+                <!-- <div *ngIf="schooldetail"> -->
                 <div *ngFor="let school of schooldetail">
                     <table class="table table-bordered">
                         <thead>
@@ -77,9 +114,7 @@
         </div>
     </div>
     <hr>
-
     <div class="container">
-
         <style>
             h3 {
                 text-align: center
@@ -95,7 +130,7 @@
                         <th>Last Name</th>
                         <th>Phone</th>
                         <th>Email</th>
-                        <th>Delete Application</th>
+                        <th>Delete/Update Application</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -115,3 +150,4 @@
             </table>
         </div>
     </div>
+</div>

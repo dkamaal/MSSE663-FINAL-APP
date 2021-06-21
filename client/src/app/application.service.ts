@@ -12,12 +12,6 @@ export class ApplicationService {
 
     //get schooldetail by zip code
 
-// getSchoolDetail(){
-//   return this.http
-//     .get('http://localhost:3000/api/schooldetail')
-//     .pipe(map((res) => res));
-// }
-
 getSchoolDetail(zip: number){
   return this.http
     .get('http://localhost:3000/api/schooldetail/' + zip)

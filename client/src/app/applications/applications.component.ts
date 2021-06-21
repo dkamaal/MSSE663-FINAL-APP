@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplicationService } from '../application.service';
 import { Application } from '../application';
+import { FormsModule} from '@angular/forms';
 import { ConvertActionBindingResult } from '@angular/compiler/src/compiler_util/expression_converter';
 import { SchoolDetail} from '../application';
 
@@ -23,9 +24,13 @@ export class ApplicationsComponent implements OnInit {
   schoolname: string;
   rating: number;
   zip: number;
+  // public zip = '';
   city: string;
+  msg: string;
 
   constructor(private applicationService: ApplicationService) {}
+
+
 
   addApplication() {
     const newApplication = {
@@ -62,11 +67,27 @@ export class ApplicationsComponent implements OnInit {
     });
   }
 
+  // getSchoolDetail(zip: any) {
+  //   this.applicationService
+  //     .getSchoolDetail(zip)
+  //     .subscribe((schooldetail) => (this.schooldetail = schooldetail));
+  // }
+
   getSchoolDetail(zip: any) {
     this.applicationService
       .getSchoolDetail(zip)
-      .subscribe((schooldetail) => (this.schooldetail = schooldetail));
+      .subscribe(
+        (schooldetail) => {(this.schooldetail = schooldetail);
+  },
+
+  (error) => {
+    console.log(error);
+    this.msg = "no ZIP Message";
   }
+  );
+}
+
+  
 
   ngOnInit() {
     this.applicationService
