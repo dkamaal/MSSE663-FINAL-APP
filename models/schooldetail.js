@@ -1,3 +1,4 @@
+// Final App Check-in 3
 const mongoose = require('mongoose');
 
 const SchoolDetailSchema = new mongoose.Schema({
