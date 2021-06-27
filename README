@@ -4,8 +4,9 @@
 
 6/20/2021: CRUD functions are working for Application Form. Also added Search By ZIP Code functionality for school search. Added Error Handling for All Forms.
 
+6/27/2021: Added Home Page with Animated School GIF. Also Added Search and Apply Button on Home page to go to application page.
 
-******************************************************************************************8
+******************************************************************************************
 Database Name: schoolapplications
 Collections: applications
              schooldetail

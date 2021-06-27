@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplicationService } from '../application.service';
 import { Application } from '../application';
-import { FormsModule} from '@angular/forms';
-import { ConvertActionBindingResult } from '@angular/compiler/src/compiler_util/expression_converter';
-import { SchoolDetail} from '../application';
 
 @Component({
   selector: 'app-applications',
@@ -24,15 +21,12 @@ export class ApplicationsComponent implements OnInit {
   schoolname: string;
   rating: number;
   zip: number;
-  // public zip = '';
   city: string;
   msg: string;
 
   constructor(private applicationService: ApplicationService) {}
 
-
-
-  addApplication() {
+  addApplication(): void {
     const newApplication = {
       _id: this._id,
       school_name: this.school_name,
@@ -45,20 +39,18 @@ export class ApplicationsComponent implements OnInit {
       .addApplication(newApplication)
       .subscribe((application) => {
         this.applications.push(application);
-        console.log(newApplication);
         this.applicationService
           .getApplications()
           .subscribe((applications) => (this.applications = applications));
       });
   }
 
-  deleteApplication(id: any) {
-    var applications = this.applications;
+  deleteApplication(id: string): void {
+    const applications = this.applications;
 
-    this.applicationService.deleteApplication(id).subscribe((data) => {
-      //if(data.n==1)
+    this.applicationService.deleteApplication(id).subscribe(() => {
       {
-        for (var i = 0; i < applications.length; i++) {
+        for (let i = 0; i < applications.length; i++) {
           if (applications[i]._id == id) {
             applications.splice(i, 1);
           }
@@ -67,29 +59,20 @@ export class ApplicationsComponent implements OnInit {
     });
   }
 
-  // getSchoolDetail(zip: any) {
-  //   this.applicationService
-  //     .getSchoolDetail(zip)
-  //     .subscribe((schooldetail) => (this.schooldetail = schooldetail));
-  // }
+  getSchoolDetail(zip: number): void {
+    this.applicationService.getSchoolDetail(zip).subscribe(
+      (schooldetail) => {
+        this.schooldetail = schooldetail;
+      },
 
-  getSchoolDetail(zip: any) {
-    this.applicationService
-      .getSchoolDetail(zip)
-      .subscribe(
-        (schooldetail) => {(this.schooldetail = schooldetail);
-  },
-
-  (error) => {
-    console.log(error);
-    this.msg = "no ZIP Message";
+      (error) => {
+        console.log(error);
+        this.msg = 'No School available';
+      }
+    );
   }
-  );
-}
 
-  
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.applicationService
       .getApplications()
       .subscribe((applications) => (this.applications = applications));

@@ -1,23 +1,18 @@
-import { Inject, Injectable } from '@angular/core';
-//import {Http, Headers} from '@angular/http';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { identifierModuleUrl } from '@angular/compiler';
-import { RouterModule, Routes } from '@angular/router';
 
 @Injectable()
 export class ApplicationService {
   constructor(private http: HttpClient) {}
 
-    //get schooldetail by zip code
+  //get schooldetail by zip code
 
-getSchoolDetail(zip: number){
-  return this.http
-    .get('http://localhost:3000/api/schooldetail/' + zip)
-    .pipe(map((res) => res));
-}
-
+  getSchoolDetail(zip: number) {
+    return this.http
+      .get('http://localhost:3000/api/schooldetail/' + zip)
+      .pipe(map((res) => res));
+  }
 
   //retrieving application service
 
@@ -28,8 +23,15 @@ getSchoolDetail(zip: number){
   }
 
   //add application method
-  addApplication(newApplication) {
-    var headers = new HttpHeaders();
+  addApplication(newApplication: {
+    _id: string;
+    school_name: string;
+    first_name: string;
+    last_name: string;
+    phone: string;
+    email: string;
+  }) {
+    const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.http
       .post('http://localhost:3000/api/application', newApplication, {
@@ -39,34 +41,39 @@ getSchoolDetail(zip: number){
   }
 
   //delete application
-  deleteApplication(id: String) {
+  deleteApplication(id: string) {
     return this.http
       .delete('http://localhost:3000/api/application/' + id)
       .pipe(map((res) => res));
   }
 
   //Update application method
-  updateApplication(id: string, newupdateApplication) {
-    var headers = new HttpHeaders();
+  updateApplication(
+    id: string,
+    newupdateApplication: {
+      school_name: string;
+      first_name: string;
+      last_name: string;
+      phone: string;
+      email: string;
+    }
+  ) {
+    const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.http
-      .put('http://localhost:3000/api/application/' + id, newupdateApplication, {
-        headers: headers,
-      })
+      .put(
+        'http://localhost:3000/api/application/' + id,
+        newupdateApplication,
+        {
+          headers: headers,
+        }
+      )
       .pipe(map((res) => res));
   }
 
-  // updateApplication(id, newupdateApplication): Observable<any> {
-  //   return this.http.put('http://localhost:3000/api/application/' + id, newupdateApplication);
-  // }
-
-  getApplication(id) {
+  getApplication(id: string) {
     return this.http
       .get('http://localhost:3000/api/applications/' + id)
       .pipe(map((res) => res));
   }
-
-
 }
-
-

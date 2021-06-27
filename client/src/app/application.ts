@@ -5,7 +5,7 @@ export class Application{
     last_name: string;
     phone: string;
     email: string;
-};
+}
 
 export class SchoolDetail{
     _id?: string;
@@ -13,4 +13,4 @@ export class SchoolDetail{
     rating: number;
     zip: number;
     city: string;
-};
+}

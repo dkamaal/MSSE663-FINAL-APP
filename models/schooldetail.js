@@ -1,4 +1,4 @@
-// Final App Check-in 3
+// Final App Check-in
 const mongoose = require('mongoose');
 
 const SchoolDetailSchema = new mongoose.Schema({

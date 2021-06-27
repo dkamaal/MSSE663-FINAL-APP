@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Application, Router } from 'express';
+import { Component, OnInit } from '@angular/core';
+import { Application } from 'express';
 import { ApplicationService } from '../application.service';
 import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
@@ -21,16 +22,11 @@ export class UpdateComponent implements OnInit {
 
   constructor(
     private applicationService: ApplicationService,
-    // private _router:Router,
     private _Activatedroute: ActivatedRoute
   ) {}
-  // @Input() id: String;
-  // @Input() siblings: [];
 
-  ngOnInit() {
+  ngOnInit(): void {
     this._id = this._Activatedroute.snapshot.paramMap.get('id');
-
-    var application = this.applications;
 
     this.applicationService.getApplication(this._id).subscribe((data) => {
       this.applications = data;
@@ -39,7 +35,6 @@ export class UpdateComponent implements OnInit {
 
   update(): void {
     const newupdateApplication = {
-      // _id: this.applications._id,
       school_name: this.applications.school_name,
       first_name: this.applications.first_name,
       last_name: this.applications.last_name,
@@ -52,7 +47,7 @@ export class UpdateComponent implements OnInit {
         (response) => {
           console.log(response);
           this.message =
-            'Application Updated Successfully. Please go to Home page for New Application.';
+            'Application Updated Successfully. Please click on Go Back Button for New Application.';
         },
         (error) => {
           console.log(error);

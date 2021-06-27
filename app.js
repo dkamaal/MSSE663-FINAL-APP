@@ -1,4 +1,4 @@
-// Final App Check-in 3
+// Final App Check-in
 
 //importing modules
 
@@ -17,8 +17,6 @@ var route = require('./routes/route');
 //MongoDB Connection
 
 mongoose.connect('mongodb://localhost:27017/schoolapplications', { useNewUrlParser: true, useUnifiedTopology: true});
-
-//mongoose.connect('mongodb://localhost:27017/applications');
 
 // To remove deprecating warning
 mongoose.set('useNewUrlParser', true);
@@ -66,7 +64,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 //routes
 
 app.use('/api', route);
-// app.use('/schooldetail', routeschooldetail);
 
 //testing server
 

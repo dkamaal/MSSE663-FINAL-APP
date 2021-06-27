@@ -1,4 +1,4 @@
-<!-- Final App Check-in 3 -->
+<!-- Final App Check-in -->
 <style>
     h2 {
         text-align: center
@@ -7,12 +7,12 @@
 <h2>Update Application</h2>
 <hr>
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
+    <div class="row justify-content-center">
+        <div class="col-6">
             <h3>Update Application Form</h3>
             <!-- <div *ngIf="this.applications"></div> -->
-            <div class="row">
-                <div class="col-md-6">
+            <!-- <div class="row">
+                <div class="col-md-6"> -->
                     <form #updateForm="ngForm" (submit)="update()">
                         <input type="hidden" [(ngModel)]="applications._id" name="_id" class="form-control" required>
                         <div class="form-group"
@@ -58,12 +58,12 @@
                                 *ngIf="emailControl.invalid && emailControl.touched">Email is required</span>
                         </div>
                         <br>
-                        <input type="submit" class="btn btn btn-success" [disabled]="updateForm.invalid" value="Update">
-                        <a href="#" class="btn btn btn-danger">Cancel</a>
+                        <input type="submit" class="btn btn btn-success" style="margin-right: 10px;" [disabled]="updateForm.invalid" value="Submit">
+                        <a href="/applications" class="btn btn btn-danger">Go Back</a>
                     </form>
                     <br>
                     <p>{{ message}}</p>
                 </div>
             </div>
-        </div>
-    </div>
+        <!-- </div>
+    </div> -->
